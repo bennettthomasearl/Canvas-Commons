@@ -107,35 +107,37 @@ While 1
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
-	MsgBox($MB_SYSTEMMODAL, "Click Settings", "//a[@class='settings']")
+	;MsgBox($MB_SYSTEMMODAL, "Click Settings", "//a[@class='settings']")
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
-	MsgBox($MB_SYSTEMMODAL, "Change the Course Code", "//input[@id='course_course_code'] Value: " & $sFilename & "")
+	;MsgBox($MB_SYSTEMMODAL, "Change the Course Code", "//input[@id='course_course_code'] Value: (" & $sFilename & ")")
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_course_code']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_course_code']")
-	_WD_ElementAction($sSession, $sElement, 'value', $sFilename)
+	_WD_ElementAction($sSession, $sElement, 'clear')
+	_WD_LoadWait($sSession, 2000)
+	_WD_ElementAction($sSession, $sElement, 'value', "(" & $sFilename & ")")
 	_WD_LoadWait($sSession, 2000)
 
-	MsgBox($MB_SYSTEMMODAL, "Click Update Course Details", "//button[contains(text(),'Update Course Details')]")
+	;MsgBox($MB_SYSTEMMODAL, "Click Update Course Details", "//button[contains(text(),'Update Course Details')]")
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//button[contains(text(),'Update Course Details')]")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[contains(text(),'Update Course Details')]")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
-	MsgBox($MB_SYSTEMMODAL, "Click Import Course Content", "//a[@class='Button Button--link Button--link--has-divider Button--course-settings import_content']")
+	;MsgBox($MB_SYSTEMMODAL, "Click Import Course Content", "//a[@class='Button Button--link Button--link--has-divider Button--course-settings import_content']")
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='Button Button--link Button--link--has-divider Button--course-settings import_content']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='Button Button--link Button--link--has-divider Button--course-settings import_content']")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
-	MsgBox($MB_SYSTEMMODAL, "Select the correct Content Type", "//select[@id='chooseMigrationConverter']//option[contains(text(),'Common Cartridge 1.x Package')]")
+	;MsgBox($MB_SYSTEMMODAL, "Select the correct Content Type", "//select[@id='chooseMigrationConverter']//option[contains(text(),'Common Cartridge 1.x Package')]")
 	_WD_ElementOptionSelect ($sSession, $_WD_LOCATOR_ByXPath, "//select[@id='chooseMigrationConverter']//option[contains(text(),'Common Cartridge 1.x Package')]")
 	_WD_LoadWait($sSession, 2000)
 
-	MsgBox($MB_SYSTEMMODAL, "Click Choose File", "//input[@id='migrationFileUpload']")
+	;MsgBox($MB_SYSTEMMODAL, "Click Choose File", "//input[@id='migrationFileUpload']")
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='migrationFileUpload']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='migrationFileUpload']")
 	_WD_ElementAction($sSession, $sElement, 'click')
@@ -154,35 +156,32 @@ While 1
 
 	_WD_LoadWait($sSession, 4000)
 
-	MsgBox($MB_SYSTEMMODAL, "Click All content radio button", "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
+	;MsgBox($MB_SYSTEMMODAL, "Click All content radio button", "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
-	MsgBox($MB_SYSTEMMODAL, "Click the Import button", "//input[@id='submitMigration']")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='submitMigration']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='submitMigration']")
+	;MsgBox($MB_SYSTEMMODAL, "Click the Import button", "//input[@id='migrationFileUpload']")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='migrationFileUpload']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='migrationFileUpload']")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
+
+	; Taught how to do the below code:
+	; https://www.autoitscript.com/forum/topic/191990-webdriver-udf-w3c-compliant-version-01162021/page/48/#comments
+
+	;MsgBox($MB_SYSTEMMODAL, "Wait for 'Completed' to appear", "//span[contains(text(),'Completed')]")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Completed')]", Default, 30*60*1000)
+	;MsgBox($MB_SYSTEMMODAL, "Click Settings", "//a[@class='settings']")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
 	Exit
 
 	; NOT CANVAS COMMONS CODE BELOW
-
-	;Give Schoology time to process the file before continuing.
-
-	;Twenty (20) minute wait
-	;_WD_LoadWait($sSession, 1200000)
-
-	;Ten (10) minute wait
-	_WD_LoadWait($sSession, 600000)
-
-	;Five (5) minute wait
-	;_WD_LoadWait($sSession, 300000)
-
-	;Thirty (30) second wait
-	;_WD_LoadWait($sSession, 30000)
 
 	;MsgBox($MB_SYSTEMMODAL, "Go into the Resource that was just uploaded", "//a[contains(text(),'" & $sCSV[1] & "')]")
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[contains(text(),'" & $sCSV[1] & "')]")
