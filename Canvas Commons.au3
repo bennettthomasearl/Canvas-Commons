@@ -94,97 +94,97 @@ While 1
 	; Remove ) from the string and use the last array number to ouput the curriculum id number
 	$sFilename = StringReplace ($sFilename[$sArrayNumber], ')', "")
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Click Start a New Course", "//button[@id='start_new_course']")
-;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@id='start_new_course']")
-;~ 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@id='start_new_course']")
-;~ 	_WD_ElementAction($sSession, $sElement, 'click')
-;~ 	_WD_LoadWait($sSession, 2000)
+	;MsgBox($MB_SYSTEMMODAL, "Click Start a New Course", "//button[@id='start_new_course']")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@id='start_new_course']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@id='start_new_course']")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Change the Course Name", "//input[@id='course_name'] Value: " & $sCSV[1] & "")
-;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_name']")
-;~ 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_name']")
-;~ 	_WD_ElementAction($sSession, $sElement, 'value', $sCSV[1])
-;~ 	_WD_LoadWait($sSession, 2000)
+	;MsgBox($MB_SYSTEMMODAL, "Change the Course Name", "//input[@id='course_name'] Value: " & $sCSV[1] & "")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_name']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_name']")
+	_WD_ElementAction($sSession, $sElement, 'value', $sCSV[1])
+	_WD_LoadWait($sSession, 2000)
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Click the Create Course button", "//span[contains(text(),'Create course')]")
-;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Create course')]")
-;~ 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Create course')]")
-;~ 	_WD_ElementAction($sSession, $sElement, 'click')
-;~ 	_WD_LoadWait($sSession, 2000)
+	;MsgBox($MB_SYSTEMMODAL, "Click the Create Course button", "//span[contains(text(),'Create course')]")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Create course')]")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Create course')]")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Click Settings", "//a[@class='settings']")
-;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
-;~ 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
-;~ 	_WD_ElementAction($sSession, $sElement, 'click')
-;~ 	_WD_LoadWait($sSession, 2000)
+	;MsgBox($MB_SYSTEMMODAL, "Click Settings", "//a[@class='settings']")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Change the Course Code", "//input[@id='course_course_code'] Value: (" & $sFilename & ")")
-;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_course_code']")
-;~ 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_course_code']")
-;~ 	_WD_ElementAction($sSession, $sElement, 'clear')
-;~ 	_WD_LoadWait($sSession, 2000)
-;~ 	_WD_ElementAction($sSession, $sElement, 'value', "(" & $sFilename & ")")
-;~ 	_WD_LoadWait($sSession, 2000)
+	;MsgBox($MB_SYSTEMMODAL, "Change the Course Code", "//input[@id='course_course_code'] Value: (" & $sFilename & ")")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_course_code']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_course_code']")
+	_WD_ElementAction($sSession, $sElement, 'clear')
+	_WD_LoadWait($sSession, 2000)
+	_WD_ElementAction($sSession, $sElement, 'value', "(" & $sFilename & ")")
+	_WD_LoadWait($sSession, 2000)
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Click Update Course Details", "//button[contains(text(),'Update Course Details')]")
-;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//button[contains(text(),'Update Course Details')]")
-;~ 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[contains(text(),'Update Course Details')]")
-;~ 	_WD_ElementAction($sSession, $sElement, 'click')
-;~ 	_WD_LoadWait($sSession, 2000)
+	;MsgBox($MB_SYSTEMMODAL, "Click Update Course Details", "//button[contains(text(),'Update Course Details')]")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//button[contains(text(),'Update Course Details')]")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[contains(text(),'Update Course Details')]")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Click Import Course Content", "//a[@class='Button Button--link Button--link--has-divider Button--course-settings import_content']")
-;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='Button Button--link Button--link--has-divider Button--course-settings import_content']")
-;~ 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='Button Button--link Button--link--has-divider Button--course-settings import_content']")
-;~ 	_WD_ElementAction($sSession, $sElement, 'click')
-;~ 	_WD_LoadWait($sSession, 2000)
+	;MsgBox($MB_SYSTEMMODAL, "Click Import Course Content", "//a[@class='Button Button--link Button--link--has-divider Button--course-settings import_content']")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='Button Button--link Button--link--has-divider Button--course-settings import_content']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='Button Button--link Button--link--has-divider Button--course-settings import_content']")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Select the correct Content Type", "//select[@id='chooseMigrationConverter']//option[contains(text(),'Common Cartridge 1.x Package')]")
-;~ 	_WD_ElementOptionSelect ($sSession, $_WD_LOCATOR_ByXPath, "//select[@id='chooseMigrationConverter']//option[contains(text(),'Common Cartridge 1.x Package')]")
-;~ 	_WD_LoadWait($sSession, 2000)
+	;MsgBox($MB_SYSTEMMODAL, "Select the correct Content Type", "//select[@id='chooseMigrationConverter']//option[contains(text(),'Common Cartridge 1.x Package')]")
+	_WD_ElementOptionSelect ($sSession, $_WD_LOCATOR_ByXPath, "//select[@id='chooseMigrationConverter']//option[contains(text(),'Common Cartridge 1.x Package')]")
+	_WD_LoadWait($sSession, 2000)
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Click Choose File", "I know it's ghetto; but it works. :P")
-;~ 	Send("{TAB}")
-;~ 	_WD_LoadWait($sSession, 2000)
-;~ 	Sleep(2000)
-;~ 	Send("{SPACE}")
-;~ 	_WD_LoadWait($sSession, 2000)
-;~ 	Sleep(2000)
+	;MsgBox($MB_SYSTEMMODAL, "Click Choose File", "I know it's ghetto; but it works. :P")
+	Send("{TAB}")
+	_WD_LoadWait($sSession, 2000)
+	Sleep(2000)
+	Send("{SPACE}")
+	_WD_LoadWait($sSession, 2000)
+	Sleep(2000)
 
-;~ 	; Upload .imscc file
-;~ 	; Wait for the file upload window to appear
-;~ 	WinWaitActive ("[CLASS:#32770]", "Open")
-;~ 	; Set the input focus on the 'File name:' textbox
-;~ 	ControlFocus("Open","","Edit1")
-;~ 	; Type in the file path of the needed file
-;~ 	ControlSetText("Open","","Edit1","C:\Users\" & $CmdLine[5] & "\Downloads\icevcourse_" & $sFilename & "_canvas.imscc")
-;~ 	; Click the 'Open' button
-;~ 	ControlClick("Open","","Button1")
-;~ 	; End of Upload .imscc file
+	; Upload .imscc file
+	; Wait for the file upload window to appear
+	WinWaitActive ("[CLASS:#32770]", "Open")
+	; Set the input focus on the 'File name:' textbox
+	ControlFocus("Open","","Edit1")
+	; Type in the file path of the needed file
+	ControlSetText("Open","","Edit1","C:\Users\" & $CmdLine[5] & "\Downloads\icevcourse_" & $sFilename & "_canvas.imscc")
+	; Click the 'Open' button
+	ControlClick("Open","","Button1")
+	; End of Upload .imscc file
 
-;~ 	_WD_LoadWait($sSession, 4000)
+	_WD_LoadWait($sSession, 4000)
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Click All content radio button", "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
-;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
-;~ 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
-;~ 	_WD_ElementAction($sSession, $sElement, 'click')
-;~ 	_WD_LoadWait($sSession, 2000)
+	;MsgBox($MB_SYSTEMMODAL, "Click All content radio button", "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Click the Import button", "//input[@id='migrationFileUpload']")
-;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='submitMigration']")
-;~ 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='submitMigration']")
-;~ 	_WD_ElementAction($sSession, $sElement, 'click')
-;~ 	_WD_LoadWait($sSession, 2000)
+	;MsgBox($MB_SYSTEMMODAL, "Click the Import button", "//input[@id='migrationFileUpload']")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='submitMigration']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='submitMigration']")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
 
-;~ 	; Taught how to do the below code:
-;~ 	; https://www.autoitscript.com/forum/topic/191990-webdriver-udf-w3c-compliant-version-01162021/page/48/#comments
+	; Taught how to do the below code:
+	; https://www.autoitscript.com/forum/topic/191990-webdriver-udf-w3c-compliant-version-01162021/page/48/#comments
 
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Wait for 'Completed' to appear", "//span[contains(text(),'Completed')]")
-;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Completed')]", Default, 30*60*1000)
-;~ 	;MsgBox($MB_SYSTEMMODAL, "Click Settings", "//a[@class='settings']")
-;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
-;~ 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
-;~ 	_WD_ElementAction($sSession, $sElement, 'click')
-;~ 	_WD_LoadWait($sSession, 2000)
+	;MsgBox($MB_SYSTEMMODAL, "Wait for 'Completed' to appear", "//span[contains(text(),'Completed')]")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Completed')]", Default, 30*60*1000)
+	;MsgBox($MB_SYSTEMMODAL, "Click Settings", "//a[@class='settings']")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
 
  	;MsgBox($MB_SYSTEMMODAL, "Click Share to Commons", "//a[@class='Button Button--link Button--link--has-divider Button--course-settings course-settings-sub-navigation-lti']")
  	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='Button Button--link Button--link--has-divider Button--course-settings course-settings-sub-navigation-lti']']")
@@ -194,6 +194,7 @@ While 1
 
 	;MsgBox($MB_SYSTEMMODAL, "Enter the iframe and check Public (any Canvas Commons user)", "")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//iframe[@id='tool_content']")
+	; !!! -- ENTERING IFRAME; VERY IMPORTANT -- !!!
 	_WD_FrameEnter($sSession, $sElement)
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Public (any Canvas Commons user)')]")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Public (any Canvas Commons user)')]")
@@ -231,116 +232,46 @@ While 1
 		Sleep(2000)
 		$i = $i - 1
 	Until $i = 0
-	;_WD_FrameLeave($sSession)
 	_WD_LoadWait($sSession, 2000)
 
-	Exit
+	;MsgBox($MB_SYSTEMMODAL, "Select the From: grade level", "//span[contains(text(),'From:')]//following::select//option[contains(text(),'9th grade')]")
+	_WD_ElementOptionSelect ($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'From:')]//following::select//option[contains(text(),'9th grade')]")
+	_WD_LoadWait($sSession, 2000)
 
-	; NOT CANVAS COMMONS CODE BELOW
+	;MsgBox($MB_SYSTEMMODAL, "Select the To: grade level", "//span[contains(text(),'To:')]//following::select//option[contains(text(),'12th grade')]")
+	_WD_ElementOptionSelect ($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'To:')]//following::select//option[contains(text(),'12th grade')]")
+	_WD_LoadWait($sSession, 2000)
 
-	;MsgBox($MB_SYSTEMMODAL, "Go into the Resource that was just uploaded", "//a[contains(text(),'" & $sCSV[1] & "')]")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[contains(text(),'" & $sCSV[1] & "')]")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[contains(text(),'" & $sCSV[1] & "')]")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 4000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click the Add Resources button", "//span[contains(text(),'Add Resources')]")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Add Resources')]")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Add Resources')]")
+	;MsgBox($MB_SYSTEMMODAL, "Click 'Click to Change'", "//button[@class='ImagePicker-button Button Button--default']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='ImagePicker-button Button Button--default']")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
-	;MsgBox($MB_SYSTEMMODAL, "Click the Add Folder button", "//a[contains(text(),'Add Folder')]")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[contains(text(),'Add Folder')]")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[contains(text(),'Add Folder')]")
+	;MsgBox($MB_SYSTEMMODAL, "Click 'browse'", "//span[@class='Link FilePicker-browse']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[@class='Link FilePicker-browse']")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
-	;MsgBox($MB_SYSTEMMODAL, "Name the folder", $sCSV[1])
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='edit-title']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='edit-title']")
-	_WD_ElementAction($sSession, $sElement, 'value', $sCSV[1])
+	WinWaitActive ("[CLASS:#32770]", "Open")
+	; This method sets input focus to 'File name' text box.
+	ControlFocus("Open","","Edit1")
+	; This method input file path of a control.
+	ControlSetText("Open","","Edit1","C:\Users\" & $CmdLine[5] & "\Downloads\icev_logo.png")
+	; This method click on 'Open' button of file uploader.
+	ControlClick("Open","","Button1")
 	_WD_LoadWait($sSession, 2000)
 
-	;MsgBox($MB_SYSTEMMODAL, "Provide a description", "")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//iframe[@id='edit-description_ifr']")
-	_WD_FrameEnter($sSession, $sElement)
-		_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//body[@id='tinymce']")
-		$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//body[@id='tinymce']")
-	_WD_ElementAction($sSession, $sElement, 'value', "For integration information please visit: https://www.icevonline.com/resources/product-guides/iCEV-and-Schoology. The final certification exam must be taken at iCEVonline.com; the final exam cannot be integrated through an external tool." & $sCSV[2] & "")
+	;MsgBox($MB_SYSTEMMODAL, "Click 'Save'", "//button[@class='Button Button--primary']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='Button Button--primary']")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
+
+	;MsgBox($MB_SYSTEMMODAL, "Click 'Share'", "//button[@class='form-submit-button Button Button--primary-large']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='form-submit-button Button Button--primary-large']")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
+
 	_WD_FrameLeave($sSession)
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click Create button", "")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//form[@id='s-library-collection-add-folder-form']//input[@id='edit-submit']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//form[@id='s-library-collection-add-folder-form']//input[@id='edit-submit']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 10000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click Select All checkbox", "")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@class='form-checkbox select-all-checkbox']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@class='form-checkbox select-all-checkbox']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click the created folder (uncheck)", "")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//table[@id='collection-view-contents']//child::a[@class='item-title active sLibraryAjaxedLinks-processed sExtlink-processed'][contains(text(),'" & $sCSV[1] & "')]//parent::td//parent::tr//child::td[@class='collection-item-checkbox sLibrary-processed']//input[@class='form-checkbox']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//table[@id='collection-view-contents']//child::a[@class='item-title active sLibraryAjaxedLinks-processed sExtlink-processed'][contains(text(),'" & $sCSV[1] & "')]//parent::td//parent::tr//child::td[@class='collection-item-checkbox sLibrary-processed']//input[@class='form-checkbox']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click the Edit button", "")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Edit')]")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Edit')]")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click Move to", "")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[contains(text(),'Move to')]")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[contains(text(),'Move to')]")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Select the correct folder", "//select[@id='edit-folder-select']//option[contains(text(), '" & $sCSV[1] & "')]")
-	_WD_ElementOptionSelect ($sSession, $_WD_LOCATOR_ByXPath, "//select[@id='edit-folder-select']//option[contains(text(), '" & $sCSV[1] & "')]")
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click Move to", "//form[@id='s-library-bulk-move-form']//input[@id='edit-submit']")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//form[@id='s-library-bulk-move-form']//input[@id='edit-submit']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//form[@id='s-library-bulk-move-form']//input[@id='edit-submit']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click Share in Pulic Resources", "//a[@class='action-publish-template sExtlink-processed popups-processed']")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='action-publish-template sExtlink-processed popups-processed']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='action-publish-template sExtlink-processed popups-processed']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Provide Public Info", "//textarea[@id='edit-description']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//iframe[@id='edit-description_ifr']")
-	_WD_FrameEnter($sSession, $sElement)
-		_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//body[@id='tinymce']")
-		$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//body[@id='tinymce']")
-	_WD_ElementAction($sSession, $sElement, 'value', "For integration information please visit: https://www.icevonline.com/resources/product-guides/iCEV-and-Schoology. The final certification exam must be taken at iCEVonline.com; the final exam cannot be integrated through an external tool." & $sCSV[2] & "")
-	_WD_FrameLeave($sSession)
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Select the correct Resource Type", "//select[@id='edit-use-category']//option[contains(text(),'Curriculum')]")
-	_WD_ElementOptionSelect ($sSession, $_WD_LOCATOR_ByXPath, "//select[@id='edit-use-category']//option[contains(text(),'Curriculum')]")
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click Subject Technology and Engineering", "//div[@id='taxonomy-chooser']//span[contains(text(),'Technology and Engineering')]")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//div[@id='taxonomy-chooser']//span[contains(text(),'Technology and Engineering')]")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//div[@id='taxonomy-chooser']//span[contains(text(),'Technology and Engineering')]")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click Make Public", "//form[@id='s-library-template-publish-form']//input[@id='edit-submit']")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//form[@id='s-library-template-publish-form']//input[@id='edit-submit']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//form[@id='s-library-template-publish-form']//input[@id='edit-submit']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 300000)
 
 WEnd
 
