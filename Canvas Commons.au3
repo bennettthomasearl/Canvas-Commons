@@ -72,9 +72,6 @@ $sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[contains(
 ; Click the Log in button
 _WD_ElementAction($sSession, $sElement, 'click')
 
-; Remove this after testing is completed.
-_WD_Navigate($sSession, "https://cevmultimedia.instructure.com/courses/1635/settings")
-
 While 1
 	; Read the .csv file
 	Local $sLine = FileReadLine($sFile)
