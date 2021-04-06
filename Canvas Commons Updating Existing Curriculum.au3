@@ -1,12 +1,12 @@
 #cs ----------------------------------------------------------------
-Name ..........: Canvas Commons.au3
-Description ...: Import thin common cartridge (thin cc) files into Canvas Commons
+Name ..........: Canvas Commons Updating Existing Curriculum.au3
+Description ...: Updating existing curriculum in Canvas Commons
 AutoIt Version : 3.3.14.5
 Author(s) .....: Thomas E. Bennett, Anthony R. Perez
-Date ..........: Tue Mar 9 2021 9:05:52 CST
+Date ..........: Fri April 2, 2021 11:08:03 CST
 
 When running this macro; make a batch file (.bat or .cmd) with these properties:
-"C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "{Path to Script}\Canvas Commons.au3" "email or username" "password" "WebDriver path" ".csv path" "local username"
+"C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "{Path to Script}\Canvas Commons Updating Existing Curriculum.au3" "email or username" "password" "WebDriver path" ".csv path" "local username"
 
 Recommended Reading / Requirements
 https://www.autoitscript.com/forum/topic/191990-webdriver-udf-w3c-compliant-version-01162021/#comments
@@ -28,8 +28,9 @@ Global Const $_WD_LOCATOR_ByTagName = "tag name"
 #include "wd_core.au3"
 #include "wd_helper.au3"
 #include <MsgBoxConstants.au3>
+#include <Date.au3>
 
-Local $sDesiredCapabilities, $sSession, $sPath, $sFile, $sLine, $sCSV, $sFilename, $sArrayNumber, $i, $sSearchTag, $sData
+Local $sDesiredCapabilities, $sSession, $sPath, $sFile, $sLine, $sCSV, $sFilename, $sArrayNumber, $i, $sSearchTag, $sData, $sDate, $sTime
 
 ; Update these values to match your environment.
 $sPath = $CmdLine[3]
@@ -74,9 +75,12 @@ _WD_ElementAction($sSession, $sElement, 'click')
 
 While 1
 
+	$sDate = _NowDate()
+	$sTime = _NowTime()
+
 	; Dashboard page, this is needed for the loop to continue correctly.
-	_WD_Navigate($sSession, "https://cevmultimedia.instructure.com/")
-	_WD_LoadWait($sSession, 2000)
+	_WD_Navigate($sSession, "https://cevmultimedia.instructure.com/courses")
+	_WD_LoadWait($sSession, 6000)
 
 	; Read the .csv file
 	Local $sLine = FileReadLine($sFile)
@@ -98,41 +102,15 @@ While 1
 	; Remove ) from the string and use the last array number to ouput the curriculum id number
 	$sFilename = StringReplace ($sFilename[$sArrayNumber], ')', "")
 
-	;MsgBox($MB_SYSTEMMODAL, "Click Start a New Course", "//button[@id='start_new_course']")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@id='start_new_course']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@id='start_new_course']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Change the Course Name", "//input[@id='course_name'] Value: " & $sCSV[1] & "")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_name']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_name']")
-	_WD_ElementAction($sSession, $sElement, 'value', $sCSV[1])
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click the Create Course button", "//span[contains(text(),'Create course')]")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Create course')]")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Create course')]")
+	;MsgBox($MB_SYSTEMMODAL, "Click an Existing Course", "//span[contains(text(),'"& $sCSV[1] &"')]")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'"& $sCSV[1] &"')]")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'"& $sCSV[1] &"')]")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
 	;MsgBox($MB_SYSTEMMODAL, "Click Settings", "//a[@class='settings']")
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Change the Course Code", "//input[@id='course_course_code'] Value: (" & $sFilename & ")")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_course_code']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='course_course_code']")
-	_WD_ElementAction($sSession, $sElement, 'clear')
-	_WD_LoadWait($sSession, 2000)
-	_WD_ElementAction($sSession, $sElement, 'value', "(" & $sFilename & ")")
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click Update Course Details", "//button[contains(text(),'Update Course Details')]")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//button[contains(text(),'Update Course Details')]")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[contains(text(),'Update Course Details')]")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
@@ -167,9 +145,15 @@ While 1
 
 	_WD_LoadWait($sSession, 4000)
 
-	;MsgBox($MB_SYSTEMMODAL, "Click All content radio button", "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//div[contains(@class,'controls selectContent')]//div[1]//label[1]//input[1]")
+	;MsgBox($MB_SYSTEMMODAL, "Click All content radio button", "//input[@name='selective_import']")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@name='selective_import']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@name='selective_import']")
+	_WD_ElementAction($sSession, $sElement, 'click')
+	_WD_LoadWait($sSession, 2000)
+
+	;MsgBox($MB_SYSTEMMODAL, "Click Overwrite assessment content with matching IDs", "//input[@id='overwriteAssessmentContent']")
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='overwriteAssessmentContent']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='overwriteAssessmentContent']")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
@@ -182,8 +166,9 @@ While 1
 	; Taught how to do the below code:
 	; https://www.autoitscript.com/forum/topic/191990-webdriver-udf-w3c-compliant-version-01162021/page/48/#comments
 
-	;MsgBox($MB_SYSTEMMODAL, "Wait for 'Completed' to appear", "//span[contains(text(),'Completed')]")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Completed')]", Default, 30*60*1000)
+	;MsgBox($MB_SYSTEMMODAL, "Wait for 'Completed' to appear", "//li[1]//div[4]//span[1][contains(text(),'Completed')]")
+	;The line directly below isn't ideal; but it works. It looks at the topmost (first) row as this row will be doing the processing.
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//li[1]//div[4]//span[1][contains(text(),'Completed')]", Default, 30*60*1000)
 	;MsgBox($MB_SYSTEMMODAL, "Click Settings", "//a[@class='settings']")
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//a[@class='settings']")
@@ -196,87 +181,57 @@ While 1
  	_WD_ElementAction($sSession, $sElement, 'click')
  	_WD_LoadWait($sSession, 2000)
 
-	;MsgBox($MB_SYSTEMMODAL, "Enter the iframe and check Public (any Canvas Commons user)", "")
+	;MsgBox($MB_SYSTEMMODAL, "Enter the iframe and verifying the status of 'Is this an update to a previously shared resource?'", "//*[name()='svg' and @name='IconX']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//iframe[@id='tool_content']")
 	; !!! -- ENTERING IFRAME; VERY IMPORTANT -- !!!
 	_WD_FrameEnter($sSession, $sElement)
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Public (any Canvas Commons user)')]")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'Public (any Canvas Commons user)')]")
+	; SVGs are part of a different namespace than regular XML; so below is needed to find SVGs.
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
+
+	While @error = $_WD_ERROR_Success
+		;MsgBox($MB_SYSTEMMODAL, @error,"Loop Start")
+		_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='LoadMore-button-btn Button Button--link']")
+		$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='LoadMore-button-btn Button Button--link']")
+		_WD_ElementAction($sSession, $sElement, 'click')
+		If @error = $_WD_ERROR_Success Then
+			_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'"& $sCSV[1] &"')]")
+			$sElement2 = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'"& $sCSV[1] &"')]")
+			_WD_ElementAction($sSession, $sElement2, 'click')
+			If @error = $_WD_ERROR_Success Then
+				SetError($_WD_ERROR_NoMatch)
+				;MsgBox($MB_SYSTEMMODAL, @error,"Exiting Loop")
+			EndIf
+			If @error = $_WD_ERROR_NoMatch Then
+				SetError($_WD_ERROR_Success)
+				;MsgBox($MB_SYSTEMMODAL, @error,"Again")
+				$i = $i + 1
+				If $i = 20 Then ; Refresh the page and search again
+					Send("{F5}")
+					_WD_LoadWait($sSession, 2000)
+					_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
+					$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
+					_WD_ElementAction($sSession, $sElement, 'click')
+					_WD_LoadWait($sSession, 2000)
+				EndIf
+			EndIf
+		EndIf
+	WEnd
 
 	;MsgBox($MB_SYSTEMMODAL, "Enter the description information", "")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//textarea[@id='description']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//textarea[@id='description']")
-	_WD_ElementAction($sSession, $sElement, 'value', 'For integration information please visit: https://www.icevonline.com/resources/product-guides/icev-and-canvas. If this is a certification; the final certification exam must be completed in icevonline.com.')
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//textarea[@id='versionNotes']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//textarea[@id='versionNotes']")
+	_WD_ElementAction($sSession, $sElement, 'value', "Curriculum Updates. Updated: " & $sDate & " " & $sTime & " CST")
 	_WD_LoadWait($sSession, 2000)
 
-	;MsgBox($MB_SYSTEMMODAL, "Enter the search tags", "CEV Multimedia")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='tags']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='tags']")
-	_WD_ElementAction($sSession, $sElement, 'value', 'CEV Multimedia')
-	Send("{ENTER}")
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Enter the search tags", "iCEV")
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='tags']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='tags']")
-	_WD_ElementAction($sSession, $sElement, 'value', 'iCEV')
-	Send("{ENTER}")
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Enter the search tags", "")
-	Do
-		_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='tags']")
-		$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//input[@id='tags']")
-		ClipPut ($sCSV[$i])
-		Send("^v")
-		Send("{ENTER}")
-		_WD_LoadWait($sSession, 2000)
-		Sleep(2000)
-		$i = $i - 1
-	Until $i = 0
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Select the From: grade level", "//span[contains(text(),'From:')]//following::select//option[contains(text(),'9th grade')]")
-	_WD_ElementOptionSelect ($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'From:')]//following::select//option[contains(text(),'9th grade')]")
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Select the To: grade level", "//span[contains(text(),'To:')]//following::select//option[contains(text(),'12th grade')]")
-	_WD_ElementOptionSelect ($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'To:')]//following::select//option[contains(text(),'12th grade')]")
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click 'Click to Change'", "//button[@class='ImagePicker-button Button Button--default']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='ImagePicker-button Button Button--default']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click 'browse'", "//span[@class='Link FilePicker-browse']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[@class='Link FilePicker-browse']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	WinWaitActive ("[CLASS:#32770]", "Open")
-	; This method sets input focus to 'File name' text box.
-	ControlFocus("Open","","Edit1")
-	; This method input file path of a control.
-	ControlSetText("Open","","Edit1","C:\Users\" & $CmdLine[5] & "\Downloads\icev_logo.png")
-	; This method click on 'Open' button of file uploader.
-	ControlClick("Open","","Button1")
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click 'Save'", "//button[@class='Button Button--primary']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='Button Button--primary']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	;MsgBox($MB_SYSTEMMODAL, "Click 'Share'", "//button[@class='form-submit-button Button Button--primary-large']")
+	;MsgBox($MB_SYSTEMMODAL, "Click 'Update'", "//button[@class='form-submit-button Button Button--primary-large']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='form-submit-button Button Button--primary-large']")
 	_WD_ElementAction($sSession, $sElement, 'click')
 	_WD_LoadWait($sSession, 2000)
 
 	_WD_FrameLeave($sSession)
-
 WEnd
 
 _WD_DeleteSession($sSession)
