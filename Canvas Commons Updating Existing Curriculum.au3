@@ -186,44 +186,57 @@ While 1
 	; !!! -- ENTERING IFRAME; VERY IMPORTANT -- !!!
 	_WD_FrameEnter($sSession, $sElement)
 	; SVGs are part of a different namespace than regular XML; so below is needed to find SVGs.
+	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconCheck']")
+	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconCheck']")
+	If @error = $_WD_ERROR_Success Then
+		MsgBox($MB_SYSTEMMODAL, "This was a previously shared resource and it needs to be updated. ", "You need to code this condition in. Halting.")
+		Exit
+	EndIf
+
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
-	_WD_ElementAction($sSession, $sElement, 'click')
-	_WD_LoadWait($sSession, 2000)
-
-	While @error = $_WD_ERROR_Success
-		;MsgBox($MB_SYSTEMMODAL, @error,"Loop Start")
-		_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='LoadMore-button-btn Button Button--link']")
-		$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='LoadMore-button-btn Button Button--link']")
+	If @error = $_WD_ERROR_Success Then
 		_WD_ElementAction($sSession, $sElement, 'click')
-		If @error = $_WD_ERROR_Success Then
-			_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'"& $sCSV[1] &"')]")
-			$sElement2 = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'"& $sCSV[1] &"')]")
-			_WD_ElementAction($sSession, $sElement2, 'click')
+		_WD_LoadWait($sSession, 2000)
+
+		While @error = $_WD_ERROR_Success
+			;MsgBox($MB_SYSTEMMODAL, @error,"Loop Start")
+			_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='LoadMore-button-btn Button Button--link']")
+			$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//button[@class='LoadMore-button-btn Button Button--link']")
+			_WD_ElementAction($sSession, $sElement, 'click')
 			If @error = $_WD_ERROR_Success Then
-				SetError($_WD_ERROR_NoMatch)
-				;MsgBox($MB_SYSTEMMODAL, @error,"Exiting Loop")
-			EndIf
-			If @error = $_WD_ERROR_NoMatch Then
-				SetError($_WD_ERROR_Success)
-				;MsgBox($MB_SYSTEMMODAL, @error,"Again")
-				$i = $i + 1
-				If $i = 20 Then ; Refresh the page and search again
-					Send("{F5}")
-					_WD_LoadWait($sSession, 2000)
-					_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
-					$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
-					_WD_ElementAction($sSession, $sElement, 'click')
-					_WD_LoadWait($sSession, 2000)
+				_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'"& $sCSV[1] &"')]")
+				$sElement2 = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//span[contains(text(),'"& $sCSV[1] &"')]")
+				_WD_ElementAction($sSession, $sElement2, 'click')
+				If @error = $_WD_ERROR_Success Then
+					SetError($_WD_ERROR_NoMatch)
+					;MsgBox($MB_SYSTEMMODAL, @error,"Exiting Loop")
+				EndIf
+				If @error = $_WD_ERROR_NoMatch Then
+					SetError($_WD_ERROR_Success)
+					;MsgBox($MB_SYSTEMMODAL, @error,"Again")
+					$i = $i + 1
+					If $i = 30 Then ; Refresh the page and search again
+						$i = 0
+						Send("{F5}")
+						_WD_LoadWait($sSession, 2000)
+						$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//iframe[@id='tool_content']")
+						; !!! -- ENTERING IFRAME; VERY IMPORTANT -- !!!
+						_WD_FrameEnter($sSession, $sElement)
+						_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
+						$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
+						_WD_ElementAction($sSession, $sElement, 'click')
+						_WD_LoadWait($sSession, 2000)
+					EndIf
 				EndIf
 			EndIf
-		EndIf
-	WEnd
+		WEnd
+	EndIf
 
 	;MsgBox($MB_SYSTEMMODAL, "Enter the description information", "")
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//textarea[@id='versionNotes']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//textarea[@id='versionNotes']")
-	_WD_ElementAction($sSession, $sElement, 'value', "Curriculum Updates. Updated: " & $sDate & " " & $sTime & " CST")
+	_WD_ElementAction($sSession, $sElement, 'value', "Curriculum Updates. Updated curriculum sent to Canvas on: " & $sDate & " at " & $sTime & " CST")
 	_WD_LoadWait($sSession, 2000)
 
 	;MsgBox($MB_SYSTEMMODAL, "Click 'Update'", "//button[@class='form-submit-button Button Button--primary-large']")
