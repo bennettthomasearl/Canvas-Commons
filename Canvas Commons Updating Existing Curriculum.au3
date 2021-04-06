@@ -186,12 +186,12 @@ While 1
 	; !!! -- ENTERING IFRAME; VERY IMPORTANT -- !!!
 	_WD_FrameEnter($sSession, $sElement)
 	; SVGs are part of a different namespace than regular XML; so below is needed to find SVGs.
-	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconCheck']")
-	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconCheck']")
-	If @error = $_WD_ERROR_Success Then
-		MsgBox($MB_SYSTEMMODAL, "This was a previously shared resource and it needs to be updated. ", "You need to code this condition in. Halting.")
-		Exit
-	EndIf
+;~ 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconCheck']")
+;~ 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconCheck']")
+;~ 	If @error = $_WD_ERROR_Success Then
+;~ 		MsgBox($MB_SYSTEMMODAL, "This was a previously shared resource and it needs to be updated. ", "You need to code this condition in. Halting.")
+;~ 		Exit
+;~ 	EndIf
 
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//*[name()='svg' and @name='IconX']")
