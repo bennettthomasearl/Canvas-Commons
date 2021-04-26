@@ -236,7 +236,7 @@ While 1
 	;MsgBox($MB_SYSTEMMODAL, "Enter the description information", "")
 	_WD_WaitElement($sSession, $_WD_LOCATOR_ByXPath, "//textarea[@id='versionNotes']")
 	$sElement = _WD_FindElement($sSession, $_WD_LOCATOR_ByXPath, "//textarea[@id='versionNotes']")
-	_WD_ElementAction($sSession, $sElement, 'value', "Curriculum Updates. Updated curriculum sent to Canvas on: " & $sDate & " at " & $sTime & " CST")
+	_WD_ElementAction($sSession, $sElement, 'value', "Curriculum Updates.")
 	_WD_LoadWait($sSession, 2000)
 
 	;MsgBox($MB_SYSTEMMODAL, "Click 'Update'", "//button[@class='form-submit-button Button Button--primary-large']")
